@@ -1,0 +1,44 @@
+// Exercise 10.02.02.
+// This program inits array to 1,2,3,4,5
+// Then it doubles each of the values.
+//
+#include <iostream>
+#include <cstdlib>
+
+using namespace std;
+
+#define SIZE_OF_ARRAY 5
+
+int main() {
+    
+     int arr[SIZE_OF_ARRAY];
+  
+     int i= 1;  // Loop counter; needed for initializing
+               // in this case.
+     
+     // Init array to 1,2,3,4,5.
+     //
+     for (int& n : arr) {
+          n = i++;
+     }
+    cout << "Here are the values:" ;
+     
+     // Print each element.
+     //
+     for (int n : arr)
+          cout << n << endl;
+
+     cout << "Now, I'm going to double ";
+     cout << "the values." << endl;
+
+     // Double each value.
+     //
+     for (int& n : arr)
+         n = n * 2;
+     
+     cout << "Here are the values: ";
+     for (int n : arr)
+         cout << n << endl;
+     system( "PAUSE" );
+     return 0;
+}

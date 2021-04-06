@@ -1,0 +1,234 @@
+// Example program211
+#include <iostream>
+using namespace std;
+int main() {
+int n;
+// Get a number n from the keyboard.
+cout << "Enter a number and press ENTER: ";
+cin >> n;
+// Get remainder after dividing by 7.
+// If remainder is 0, then n is not divisible by 7.
+if (n % 7 == 0)
+cout << "The number is divisible.";
+else
+cout << "The number is not divisible.";
+return 0;
+}
+
+
+// Example program221
+#include <iostream>
+using namespace std;
+int main() {
+int i , n;
+// Get number from the keyboard and initialize i.
+cout << "Enter a number and press ENTER: ";
+cin >> i;
+cout << "Enter a number and press ENTER: ";
+cin >> n;
+while (i <= n) { // While i less than or equal n,
+cout << i << " "; // Print i,
+i = i + 1; // Add 1 to i.
+}
+return 0;
+}
+
+// Example program222
+#include <iostream>
+using namespace std;
+int main()
+{
+    // Declare two variables as n and i
+    int n, i;
+
+    // Assign 5 to i and 1 to n and do the calculation
+    n=1;
+    cout << "Enter a number and press ENTER: ";
+    cin >> i;
+    while(i >= n){
+        cout << i << " ";
+        i = i - 1;
+    }
+    return 0;
+}
+
+// Example program223
+#include<stdio.h>
+#include <iostream>
+using namespace std;
+
+
+int main(){
+
+    int number;
+    int min,max;
+ 
+    cout << "Enter the minimum range: ";
+    cin >> min;
+
+   cout << "Enter the maximum range: ";
+    cin >> max;
+
+    
+
+    printf("\nEven numbers in given range are: ");
+    for(number = min;number <= max; number++)
+
+         if(number % 2 ==0)
+             cout << number << " ";
+ 
+    return 0;
+}
+
+// Example program231
+#include <iostream>
+using namespace std;
+int main() {
+int n;
+cout << "Enter an age and press ENTER: ";
+cin >> n;
+if (n > 0 && n < 100)
+cout << "Subject in range." << endl;
+else
+cout << "Subject in range." << endl;
+system("PAUSE");
+return 0;
+}
+
+// Example program241
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+
+
+int main(){
+
+	int n, i, is_prime = true;
+
+	cout << "Enter a number and press ENTER: ";
+    cin >> n;
+	double m = sqrt((double)n);
+
+	i = 2;
+	while(i <= m){
+             if (n % i == 0){
+             is_prime = false;
+             break;
+        }
+		i++;
+	}
+
+	if(is_prime)
+		cout << "Number is prime." << endl;
+	else
+		cout << "Number is not prime." << endl;
+		
+system("pause");
+return 0;}
+
+// Example program251
+#include <iostream>
+using namespace std;
+int main() {
+int total=0, n=0;
+while (true) {
+cout << "Welcome to NIM. Pick a starting total: ";
+cin >> total;
+if (total>0) {
+    break;
+}
+cout << "WRITE NUMBER GREATER THAN 0." << endl; 
+}
+while (true) {
+// Pick best response and print results.
+if ((total % 3) == 2) {
+total = total - 2;
+cout << "I am subtracting 2." << endl;
+} else {
+total--;
+cout << "I am subtracting 1." << endl;
+}
+cout << "New total is " << total << endl;
+if (total == 0) {
+cout << "I win!" << endl;
+break;
+}
+// Get user’s response; must be 1 or 2.
+cout << "Enter num to subtract (1 or 2): ";
+cin >> n;
+while (n < 1 || n > 2) {
+cout << "Input must be 1 or 2." << endl;
+cout << "Re-enter: ";
+cin >> n;
+}
+total = total - n;
+cout << "New total is " << total << endl;
+if (total == 0) {
+cout << "You win!" << endl;
+break;
+}
+}
+system("PAUSE");
+return 0;
+}
+
+// Example program252
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int n, total, x;
+
+    cout << "Welcome to Nim! Pick a starting total." << endl;
+    cin >> total;
+    while (total < 1){
+        cout << "Starting total must be higher than 0." << endl;
+        cout << "Re-enter starting total: ";
+        cin >> total;
+    }
+    if(n>=1)
+		cout << "GOOD." << endl;
+	else
+		cout << "Welcome to NIM. Pick a starting total: ";
+        cin >> total;
+    cout << "Enter a a range of numbers you wish to use to subtract 1 - ?" << endl;
+    cin >> x;
+    cout << "Your available numbers are 1 - " << x << endl;
+    while (true){
+        if ((total % 3) == 2){
+            total -= 2;
+            cout << "I am subtracting 2." << endl; //<--- Need to do something with this block of code.
+        } else {
+            total--;
+            cout << "I am subtracting 1." << endl;
+        }
+        cout << "New total is " << total << endl;
+        if (total <= 0){
+            cout << "I WIN!!!" << endl;
+            break;
+        }
+
+        cout << "Enter a number to subtract (1 - " << x << "): ";
+        cin >> n;
+        while(n < 1 || n > x){
+            cout << "Input must be a 1 or 2." << endl;
+            cout << "Re-enter: ";
+            cin >> n;
+        }
+
+        total -= n;
+        cout << "New total is " << total << endl;
+        if (total <= 0){
+            cout << "You WIN!!!" << endl;
+            break;
+        }
+    }
+    return 0;
+}
+
+
+
+

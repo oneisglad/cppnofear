@@ -1,0 +1,75 @@
+// Exercise 10.01.01. 
+// Produce Fibo numbers by fist filling up an array of
+//  of first 70, then index into it.
+//
+
+#include <iostream>
+#include <string>
+#include <sstream>
+
+using namespace std;
+int long long Fibo(int n);
+string output_formatted_string(long long num);
+
+void fill_Fibo_array();    // Prototype for intialization funct.
+
+long long Fibo_array[70];  // This will be filled with first 70 Fibo's.
+
+int main() {
+     int n = 0;
+     fill_Fibo_array();    // Produce the Fibo values.
+     
+     cout << "Enter a number less than 70: ";
+     cin >> n;
+     if (n >= 0 && n < 70) {
+          string s = output_formatted_string(Fibo_array[n]);
+          cout << "Fibo(" << n << ") = " << s << endl;
+     }
+     system("PAUSE");
+     return 0;
+}
+
+// Fibo_array initialization function.
+// Using an array is an easy way to generate Fibo values
+//  all at once; the programming is very simple.
+//
+void fill_Fibo_array() {
+     Fibo_array[0] = 1;
+     Fibo_array[1] = 1;
+
+     for (int i = 2; i < 70; i++) {
+          Fibo_array[i] = Fibo_array[i - 1] +
+                          Fibo_array[i - 2];
+     }
+}
+
+#define GROUP_SEP ','
+#define GROUP_SIZE 3
+
+string output_formatted_string(long long num) {
+     // Read data into string s.
+
+     stringstream temp, out;
+     temp << num;
+     string s = temp.str();
+
+     // Write first characters, in front of
+     // first separator (GROUP_SEP).
+
+     int n = s.size() % GROUP_SIZE;
+     int i = 0;
+     if (n > 0 && s.size() > GROUP_SIZE) {
+          out << s.substr(i, n) << GROUP_SEP;
+          i += n;
+     }
+
+     // Handle all the remaining groups.
+
+     n = s.size() / GROUP_SIZE - 1;
+     while (n-- > 0) {
+          out << s.substr(i, GROUP_SIZE) << GROUP_SEP;
+          i += GROUP_SIZE;
+     }
+     out << s.substr(i); // Write the rest of digits.
+     return out.str(); // Convert stream -> string.
+}

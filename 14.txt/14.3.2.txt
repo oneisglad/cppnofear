@@ -1,0 +1,106 @@
+// Exercise 14.03.02
+// This program alters the declarations in string2.cpp
+//  so that each function taking an argument of type
+//  char* is converted to a const argument.
+
+
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+class String {
+private:
+    char *ptr;
+public:
+    String();
+    String(const char *s);             // ALTERED LINE
+    String(const String &src);
+    ~String();
+
+    String& operator=(const String &src)
+        {cpy(src.ptr); return *this;}
+
+    String& operator=(const char *s)   // ALTERED LINE
+        {cpy(s); return *this;}
+
+    String operator+(const char *s);   // ALTERED LINE
+    int operator==(const String &other);
+    operator char*() {return ptr;}
+
+    void cat(const char *s);   // ALTERED LINE
+    void cpy(const char *s);   // ALTERED LINE
+};
+
+int main() {
+    String a, b, c;
+    a = "I ";
+    b = "am ";
+    c = "so ";
+    String d = a + b + c + "very happy!\n";
+    cout << d;
+    system("PAUSE");
+    return 0;
+}
+
+// ----------------------------------
+// STRING CLASS FUNCTIONS
+
+String::String() {
+    ptr = new char[1];
+    ptr[0] = '\0';
+}
+
+String::String(const char *s) {                    // ALTERED LINE
+    int n = strlen(s);
+    ptr = new char[n + 1];
+    strcpy(ptr, s);
+}
+
+String::String(const String &src) {
+    int n = strlen(src.ptr);
+    ptr = new char[n + 1];
+    strcpy(ptr, src.ptr);
+}
+
+String::~String() {
+    delete [] ptr;
+}
+
+int String:: operator==(const String &other) {
+    return (strcmp(ptr, other.ptr) == 0);
+}
+
+String String::operator+(const char *s) {          // ALTERED LINE
+    String new_str(ptr);
+    new_str.cat(s);
+    return new_str;
+}
+
+// cpy -- Copy string function
+//
+void String::cpy(const char *s) {                  // ALTERED LINE
+    delete [] ptr;
+    int n = strlen(s);
+    ptr = new char[n + 1];
+    strcpy(ptr, s);
+}
+
+// cat -- Concatenate string function
+//
+void String::cat(const char *s) {                  // ALTERED LINE
+
+    // Allocate sufficient room for new string data.
+
+    int n = strlen(ptr) + strlen(s);
+    char *p1 = new char[n + 1];
+
+    // Copy data to this new memory block.
+
+    strcpy(p1, ptr);
+    strcat(p1, s);
+
+    // Release old memory block and update ptr.
+
+    delete [] ptr;
+    ptr = p1;
+}

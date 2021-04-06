@@ -1,0 +1,63 @@
+// Exercise 11.04.03
+// This program extends the Point class in Chapter 11
+//  by including a new function, Point::add.
+
+#include <iostream>
+using namespace std;
+
+class Point {
+private:             // Data members (private)
+    int x, y;
+public:              // Member functions
+    void set(int new_x, int new_y);
+    int get_x();
+    int get_y();
+    Point add(Point other);     // NEW DECLARATION
+};
+
+int main() {
+    Point pt1, pt2, pt3;
+
+    pt1.set(10, 20);
+    cout << "pt1 is " << pt1.get_x();
+    cout << ", " << pt1.get_y() << endl;
+    pt2.set(-5, -25);
+    cout << "pt2 is " << pt2.get_x();
+    cout << ", " << pt2.get_y() << endl;
+
+    pt3 = pt1.add(pt2);          // TEST THE ADD FUNCTION
+    pt2.set(-5, -25);
+    cout << "pt3 is " << pt3.get_x();
+    cout << ", " << pt3.get_y() << endl;
+
+    system("PAUSE");
+    return 0;
+}
+
+void Point::set(int new_x, int new_y) {
+    if (new_x < 0)
+        new_x *= -1;
+    if (new_y < 0)
+        new_y *= -1;
+    x = new_x;
+    y = new_y;
+}
+
+int Point::get_x() {
+    return x;
+}
+
+int Point::get_y() {
+    return y;
+}
+
+
+// NEW MEMBER FUNCTION, POINT::ADD
+
+Point Point::add(Point other) {
+    Point new_pt;
+    int new_x = x + other.get_x();
+    int new_y = y + other.get_y();
+    new_pt.set(new_x, new_y);
+    return new_pt;
+}

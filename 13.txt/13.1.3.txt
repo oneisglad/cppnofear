@@ -1,0 +1,89 @@
+// Exercise 13.01.03
+// This program creates and tests * operations between Point3D class
+//  and the int type, adding support for third dimension, z.
+//
+#include <iostream>
+using namespace std;
+
+class Point {
+private:             // Data members (private)
+    int x, y, z;
+public:              // Constructors
+    Point() {};
+    Point(int new_x, int new_y, int new_z) 
+         {set(new_x, new_y, new_z);}
+    Point(const Point &src) {set(src.x, src.y, src.z);}
+
+// Operations
+
+    Point add(const Point &pt);
+    Point sub(const Point &pt);
+    Point operator+(const Point &pt) {return add(pt);}
+    Point operator-(const Point &pt) {return sub(pt);}
+    
+    friend Point operator*(const Point &pt, const int &n); // FRIEND DECL.
+    friend Point operator*(const int &n, const Point &pt);
+
+// Other member functions
+
+    void set(int new_x, int new_y, int new_z);
+    int get_x() const {return x;}
+    int get_y() const {return y;}
+    int get_z() const {return z;}
+};
+
+int main() {
+
+    Point point1(20, 20, 15);
+    Point point2 = point1 * 4;                  // TEST MULTIPLICATION WITH INT'S
+
+    cout << "The point is " << point2.get_x();
+    cout << ", " << point2.get_y() << ", ";
+    cout << point2.get_z() << endl;
+
+    system("PAUSE");
+    return 0;
+}
+
+void Point::set(int new_x, int new_y, int new_z) {
+    if (new_x < 0)
+        new_x *= -1;
+    if (new_y < 0)
+        new_y *= -1;
+    if (new_z < 0)
+        new_z *= -1;
+    x = new_x;
+    y = new_y;
+    z = new_z;
+}
+
+Point Point::add(const Point &pt) {
+    Point new_pt;
+    new_pt.x = x + pt.x;
+    new_pt.y = y + pt.y;
+    new_pt.z = z + pt.z;
+    return new_pt;
+}
+
+Point Point::sub(const Point &pt) {
+    Point new_pt;
+    new_pt.x = x - pt.x;
+    new_pt.y = y - pt.y;
+    new_pt.z = z - pt.z;
+    return new_pt;
+}
+
+
+// POINT CLASS FRIEND FUNCTIIONS
+
+Point operator*(const Point &pt, const int &n) {
+    Point new_pt;
+    new_pt.set(pt.x * n, pt.y * n, pt.z * n);
+    return new_pt;
+}
+
+Point operator*(const int &n, const Point &pt) {
+    Point new_pt;
+    new_pt.set(pt.x * n, pt.y * n, pt.z * n);
+    return new_pt;
+}

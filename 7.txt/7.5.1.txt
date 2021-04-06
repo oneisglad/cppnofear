@@ -1,0 +1,26 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string str, name, breed, age;
+
+    // Get three strings from the user.
+
+    cout << "Enter name and press ENTER: ";
+    getline(cin, name);
+    cout << "Enter breed and press ENTER: ";
+    getline(cin, breed);
+    cout << "Enter age and press ENTER: ",
+    getline(cin, age);
+
+    // Build the output string, and then print it.
+
+    str = "\nMy dog's name is " + name + ", " +
+          "the breed is " + breed +
+          ",\nand the age is " + age + ".\n";
+
+    cout << str << endl;
+    system("PAUSE");
+    return 0;
+}

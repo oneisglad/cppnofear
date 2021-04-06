@@ -1,0 +1,30 @@
+#include <iostream>
+#include <cstring>
+#include <fstream>
+using namespace std;
+
+int main() {
+    char filename[81];
+    char input_line[81];  // Input line for text entry
+
+    cout << "Enter a file name and press ENTER: ";
+    cin.getline(filename, 80);
+
+    ofstream file_out(filename);
+    if (! file_out) {
+        cout << "File " << filename << " could not be opened." << endl;
+        system("PAUSE");
+        return -1;
+    }
+    cout << "File " << filename << " was opened." << endl;
+    while (1) {
+        cout << "Enter line (@@@ to quit)>>";
+        cin.getline(input_line, 80);
+        if (strcmp(input_line, "@@@") == 0)
+            break;
+        file_out << input_line << endl;
+    }
+    file_out.close();
+    system("PAUSE");
+    return 0;
+}

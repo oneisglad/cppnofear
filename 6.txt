@@ -1,0 +1,183 @@
+// Exercise 06.02.01
+// This program passes the address of a variable to a 
+//  function, which triples the value pointed to.
+
+#include <iostream>
+using namespace std;
+
+void triple_it(int *n);
+
+int main() {
+    int n = 15;
+
+    cout << "Value of n before tripling: " << n << endl;
+
+    triple_it(&n);      // Pass address of temp.
+
+    cout << "Value after tripling: " << n << endl;
+
+    system("PAUSE");
+    return 0;
+}
+
+void triple_it(int *n) {
+    *n = *n * 3;
+}
+
+
+// Exercise 06.02.02
+// This program passes the address of a variable to a 
+//  function, which performs a Celsius-to-Fahrenheit conversion.
+
+#include <iostream>
+using namespace std;
+
+void convert_temp(double *p);
+
+int main() {
+    double temp = 10.0;
+
+    cout << "Value (Celsius) before conversion: " << temp << endl;
+
+    convert_temp(&temp);      // Pass address of temp.
+
+    cout << "Value after conversion to Fahrenheit: " << temp << endl;
+
+    system("PAUSE");
+    return 0;
+}
+
+void convert_temp(double *p) {
+    *p = (*p * 1.8) + 32;
+}
+
+
+// Exercise 06.03.01
+// This program sorts an array from highest member
+//  down to lowest, in that order.
+
+#include <iostream>
+using namespace std;
+
+void sort(int n);
+void swap(int *p1, int *p2);
+
+int a[10];
+
+int main () {
+    int i;
+
+    for (i = 0; i < 10; i++) {
+        cout << "Enter array element #" << i << ": ";
+        cin >> a[i];
+    }
+    sort(10);
+
+    cout << "Here are all the array elements, sorted:" << endl;
+    for (i = 0; i < 10; i++)
+        cout << a[i] << "  ";
+
+    cout << endl;
+    system("PAUSE");
+    return 0;
+}
+
+// Sort array function: sort array named a, having n elements.
+// 
+void sort (int n) {
+    int i, j, high;
+
+    for(i = 0; i < n - 1; i++) {
+
+        // This part of the loop finds the highest
+        //  element in the range i to n-1; the index
+        //  is set to the variable named high.
+
+        high = i;
+        for (j = i + 1; j < n; j++)
+            if (a[j] > a[high])
+                high = j;
+
+        // This part of the loop performs a swap if
+        //  needed.
+
+        if (i != high)
+            swap(&a[i], &a[high]);
+    }
+}
+
+// Swap function.
+// Swap the values pointed to by p1 and p2.
+//
+void swap(int *p1, int *p2) {
+    int temp = *p1;
+    *p1 = *p2;
+    *p2 = temp;
+}
+// Swap function.
+// Swap the values pointed to by p1 and p2.
+//
+
+
+// Exercise 06.03.02
+// Sorts an array.
+//
+#include <iostream>
+using namespace std;
+
+void sort(int n);
+void swap(double *p1, double *p2);  
+
+double a[10];                       
+
+int main () {
+
+    for (int i = 0; i < 10; i++) {
+        cout << "Enter array element #" << i << ": ";
+        cin >> a[i];
+    }
+    sort(10);
+
+    cout << "Here are all the array elements, sorted:" << endl;
+    for (int i = 0; i < 10; i++)
+        cout << a[i] << "  ";
+
+    cout << endl;
+    system("PAUSE");
+    return 0;
+}
+
+// Sort array function: sort array named a, having n elements.
+// 
+void sort (int n) {
+    int i, j, low;  // Indexes into array; these remain type int.
+
+    for(i = 0; i < n - 1; i++) {
+
+        // This part of the loop finds the highest
+        //  element in the range i to n-1; the index
+        //  is set to the variable named high.
+
+        low = i;
+        for (j = i + 1; j < n; j++)
+            if (a[j] < a[low])
+                low = j;
+
+        // This part of the loop performs a swap if
+        //  needed.
+
+        if (i != low)
+            swap(&a[i], &a[low]);
+    }
+}
+
+// Swap function.
+// Swap the values pointed to by p1 and p2.
+
+void swap(double *p1, double *p2) {
+    double temp = *p1;
+    *p1 = *p2;
+    *p2 = temp;
+}
+
+

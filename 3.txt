@@ -1,0 +1,78 @@
+// Example program 3.1.1
+#include <iostream>
+using namespace std;
+int main() {
+int i, n, n1, n2;
+// Get number from the keyboard and initialize i.
+cout << "Enter a number and press ENTER: ";
+cin >> n;
+cout << "Enter a number and press ENTER: ";
+cin >> n1;
+cout << "Enter a number and press ENTER: ";
+cin >> n2;
+for (i=n1, n=n2; i <= n; i++) // For i = i to n,
+cout << i << " "; // Print i.
+system("PAUSE");
+return 0;
+}
+
+
+// Example program 3.1.2
+#include <iostream>
+using namespace std;
+int main() {
+int i, n;
+// Get number from the keyboard and initialize i.
+cout << "Enter a number and press ENTER: ";
+cin >> n;
+for (i = n; i >= 1; i=i-1) // For i = 1 to n,
+cout << i << " "; // Print i.
+system("PAUSE");
+return 0;
+}
+
+// Example program3.1.3
+#include <iostream>
+using namespace std;
+int main() {
+int i, n;
+// Get number from the keyboard and initialize i.
+cout << "Enter a number and press ENTER: ";
+cin >> n;
+for (i = n; i >= 1; i=i+2) // For i = 1 to n,
+cout << i << " "; // Print i.
+system("PAUSE");
+return 0;
+}
+
+3.2.1
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main()
+{
+int  n = 0;   // for prime-ness
+bool is_prime = true; // Boolean flag; assume true
+						  //   until proven otherwise
+
+cout << "Enter a number and press ENTER: ";
+cin >> n;
+double m = sqrt(n);    
+for (int i = 2; i <= m; ++i) {
+if (n % i == 0) {
+is_prime = false;
+break;                
+}
+}
+
+if (is_prime) {
+cout << "Number is prime." << endl;
+}
+else {
+cout << "Number is not prime." << endl;
+}
+system("pause");
+return 0;
+}	

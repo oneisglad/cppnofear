@@ -1,0 +1,194 @@
+// Exercise 1.01.01
+// Print "Get with the Program!"
+
+#include <iostream>
+using namespace std;
+
+int main() {
+     cout << "Get with the program!";
+     system("PAUSE");
+     return 0;
+}
+
+// Exercise 01.01.02
+// Print your name.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+     cout << "Brian R. Overland";
+     system("PAUSE");
+     return 0;
+}
+
+// Exercise 01.01.03
+// Print the message "Do you C++?"
+
+#include <iostream>
+using namespace std;
+
+int main() {
+     cout << "Do you C++?";
+     system("PAUSE);
+     return 0;
+}
+
+// Exercise 01.02.01
+// Print messages without newlines, only separating spaces.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+     cout << "I am Blaxxon, ";
+     cout << "the godlike computer. ";
+     cout << "Fear me!" << endl;
+
+     system("PAUSE);
+     return 0;
+}
+
+// Exercise 01.02.02
+// Print messages with blank line between each.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+     cout << "I am Blaxxon," << endl << endl;
+     cout << "the godlike computer." << endl << endl;
+     cout << "Fear me!" << endl;
+
+     system("PAUSE");
+     return 0;
+}
+
+// Exercise 01.02.03
+// Print messages with two blank lines between each line of print.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+     cout << "I am Blaxxon," << endl << endl << endl;
+     cout << "the godlike computer." << endl << endl << endl;
+     cout << "Fear me!" << endl;
+
+     system("PAUSE");
+     return 0;
+}
+
+// Exercise 01.03.01
+// Convert from Fahrenheit to Centigrade.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+     double  ctemp, ftemp;
+
+     cout << "Input a Fahrenheit temp and press ENTER: ";
+     cin >> ftemp;
+     ctemp = (ftemp - 32) / 1.8;
+     cout << "Celsius temp is: " << ctemp;
+
+     system("PAUSE");
+     return 0;
+}
+
+// Exercise 01.03.02
+// Convert from Fahrenheit to Centigrade, using only one variable.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+     double  ftemp;
+
+     cout << "Input a Fahrenheit temp and press ENTER: ";
+     cin >> ftemp;
+     cout << "Celsius temp is: " << (ftemp - 32) / 1.8;
+
+     system("PAUSE"): 
+     return 0;
+}
+
+// Exercise 01.03.03
+// Calculate cube (n to the 3rd) for n, a number
+//   entered from the keyboard.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+
+// Declare n as a floating-pt variable.
+
+    double  n;
+
+// Prompt and input value of n.
+
+    cout << "Input a number and press ENTER: ";
+    cin >> n;
+
+// Calculate and output the cube.
+
+    cout << "The cube is: " << n * n * n;
+
+    system("PAUSE");
+    return 0;
+}
+
+// Exercise 01.03.04
+// Output square of a number, using variable name "num."
+
+#include <iostream>
+using namespace std;
+
+int main() {
+
+// Declare num as a floating-pt variable.
+
+    double  num;
+
+// Prompt and input value of num.
+
+    cout << "Input a number and press ENTER: ";
+    cin >> num;
+
+// Calculate and output the square.
+
+    cout << "The square is: " << num * num;
+
+    system("PAUSE");
+    return 0;
+}
+
+x				Valid
+
+x1				Valid -- names may include digits
+
+EvilDarkness			Valid
+
+PennslyvaniaAve1600		Valid -- names may include digits
+
+1600PennsylvaniaAve		INvalid -- names may not start w/ digits
+
+Bobby_the_Robot			Valid -- underscores are okay
+
+Bobby+the+Robot			INvalid -- addition sign may not be included
+
+whatThe???			INvalid -- question mark may not be included
+
+amount				Valid
+
+count2				Valid
+
+count2five			Valid
+
+5count				INvalid -- names may not start w/ digits
+
+main				Valid
+
+main2				Valid

@@ -1,0 +1,589 @@
+// Exercise 04.01.01
+// This program calculates factorial numbers.
+
+#include <iostream>
+
+using namespace std;
+
+int main(int argc, char *argv[])
+{
+    int N;
+    long long result = 1;
+    
+    cout << "Give N = "; cin >> N;
+
+    /*
+         We will calculate RESULT = RESULT * N * N-1 * N-2 * ... * 2 * 1;
+         The reason for which RESULT must be initialised to 1 is that before initializing
+        the variable has garbage values, meaning that on that spot on memory there could be
+        any values stored.
+    */
+    for (int i = N; i >= 1; i--)
+    {
+        result = result * i;
+    }
+
+    cout << N << "! = " << result << endl;
+    
+    return 0;
+}
+
+
+// Exercise 04.01.02
+#include <iostream>
+ 
+using namespace std;
+ 
+	
+void print_out(int);
+ 
+int main()
+{
+    int n;
+    cout<< "Enter a number: ";
+    cin>> n;
+    print_out(n);
+ 
+return 0;
+}
+ 
+void print_out (int n)
+{
+    int i;
+    for(i = 1; i <= n; i++)
+        cout<< i << endl;
+ 
+}
+
+
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+bool prime(int n);
+
+int main() {
+	int i;
+
+	while (true) { //This takes an input and checks the results.  Just automate the input
+
+		cout << "Enter num (0 = exit) and press ENTER: ";
+		cin >> i; //This is the input stuff you'll have to automate.
+
+		if (i == 0) 
+			break;
+
+		if (prime(i)) 
+			cout << i << " is prime" << endl;
+		else
+			cout << i << " is not prime" << endl;
+	}
+
+	system("PAUSE");
+	return 0;
+}
+
+bool prime(int n) {
+	int i;
+
+	for (i = 2; i <= sqrt(n); i++) { // We can see sqrt(n) is calculated every iteration here in the check statement
+		if (n % i == 0) 
+		return false;
+	}
+
+	return true; 
+}
+
+// Exercise 04.02.02
+// This program determines whether each of the numbers
+//  2 to 20 is prime or not.
+// 
+
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+// Function must be declared before being used.
+int prime(int n);
+
+int main() {
+    int i;
+
+// Set up an infinite loop; break if user enters 0.
+// Otherwise, evaluate n from prime-ness.
+
+     for (i = 2; i <= 20; i++) {
+                        
+         if (prime(i))                       // Call prime(i)
+            cout << i << " is prime" << endl;
+         else
+            cout << i << " is not prime" << endl;
+     }
+     cout << endl;
+     system("PAUSE");
+     return 0;
+}
+
+// Prime number function. Test divisors from
+//  2 to sqrt of n. Return false if a divisor
+//  found; otherwise, return true.
+
+int prime(int n) {
+    int i;
+    double sqrt_n = sqrt(static_cast<double>(n));
+
+    for (i = 2; i <= sqrt_n; i++) {
+        if (n % i == 0)           // If i divides n evenly,
+            return false;         //  n is not prime.
+    }
+    return true;   // If no divisor found, n is prime.
+}
+
+
+// Exercise 04.02.03
+// This program find the first prime number greater
+//  than one billion (1000000000).
+// 
+
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+// Function must be declared before being used.
+int prime(int n);
+
+int main() {
+    int i;
+
+// Set up an infinite loop; break if user enters 0.
+// Otherwise, evaluate n from prime-ness.
+
+    for (i = 1000000001; ; i++) {
+                        
+         if (prime(i)) {                     // Call prime(i)
+             cout << i << " is prime" << endl;
+             break;
+         }
+    }
+    system("PAUSE");
+    return 0;
+}
+
+// Prime number function. Test divisors from
+//  2 to sqrt of n. Return false if a divisor
+//  found; otherwise, return true.
+
+int prime(int n) {
+    int i;
+    double sqrt_n = sqrt(static_cast<double>(n));
+
+    for (i = 2; i <= sqrt_n; i++) {
+        if (n % i == 0)           // If i divides n evenly,
+            return false;         //  n is not prime.
+    }
+    return true;   // If no divisor found, n is prime.
+}
+
+
+// Exercise 04.02.04
+// This program find the first prime number greater
+//  than n, a number input from keyboard.
+// 
+
+#include <stdio.h>
+int main()
+{
+    int n, i, flag = 0;
+
+    printf("Enter a positive integer: ");
+    scanf("%d",&n);
+
+    for(i=2; i<=n/2; ++i)
+    {
+        // condition for nonprime number
+        if(n%i==0)
+        {
+            flag=1;
+            break;
+        }
+    }
+
+    if (flag==0)
+        printf("%d is a prime number.",n);
+    else
+        printf("%d is not a prime number.",n);
+    
+    return 0;
+}
+
+// Exercise 04.03.01
+// This program uses a loop that keeps calculating GCF
+//  until the user enters 0.
+
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+void get_divisors(int n);
+
+int main() {
+    int n;
+
+
+    while(1) {
+        cout << "Enter a number (0 to quit): ";
+        cin >> n;
+        if (n == 0)
+            break;
+        get_divisors(n);
+        cout << endl;
+    }
+    system("PAUSE");
+    return 0;
+}
+
+// Get divisors function
+//  This function prints all the divisors of n,
+//  by finding the lowest divisor, i, and then
+//  rerunning itself on n/i, the remaining quotient.
+
+void get_divisors(int n) {
+     int i;
+     double sqrt_of_n = sqrt((double) n);
+
+     for (i = 2; i <= sqrt_of_n; i++)
+         if (n % i == 0) {        // If i divides n evenly,
+            cout << i << ", ";    //   Print i,
+            get_divisors(n / i);  //   Factor n/i,
+            return;               //   and exit.
+         }
+
+     // If no divisor is found, then n is prime;
+     //  Print n and make no further calls.
+
+     cout << n;   
+}                        
+
+
+// Exercise 04.03.02
+// Recursive triangle number function.
+//
+
+#include <iostream>
+using namespace std;
+
+int get_triangle(int n);
+
+int main() {
+    int n;
+
+    while(1) {
+        cout << "Enter a number (0 to quit): ";
+        cin >> n;
+        if (n == 0)
+            break;
+        cout << "Triangle(n) = ";
+        cout << get_triangle(n) << endl;
+    }
+    return 0;
+}
+
+// Triangle function
+//
+int get_triangle(int n) {
+   
+   if (n > 1)
+       return n + get_triangle(n-1);
+   else
+       return 1;
+}
+
+
+// Exercise 04.03.03
+// This program uses a loop that keeps calculating GCF
+//  until the user enters 0.
+// This version uses an iterative solution, rather than recursion.
+//
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+void get_divisors(int n);
+
+int main() {
+    int n;
+
+
+    while(1) {
+        cout << "Enter a number (0 to quit): ";
+        cin >> n;
+        if (n == 0)
+            break;
+        get_divisors(n);
+        cout << endl;
+    }
+    return 0;
+}
+
+// Get divisors function:
+// This is an iterative solution.
+//
+void get_divisors(int n) {
+   int ld = 0;
+   
+   while (n > 0) {
+       ld = find_lowest_divisor(n);
+       if (ld == 0) {
+           cout << n;
+           n = 0;
+       } else {
+           cout << ld << ", ";
+           n = ld;
+       }
+    }
+    cout << endl;
+}
+
+
+// Get lowest divisor function
+//  This function returns the lowest divisor of n, if found.
+//  Otherwise, it returns 0.
+//
+int get_lowest_divisor(int n) {
+     double sqrt_of_n = sqrt(n);
+
+     for (int i = 2; i <= sqrt_of_n; i++)
+         if (n % i == 0) {        // If i divides n evenly,
+            return i;             //   exit.
+         }
+
+     return 0;   
+}                        
+
+// Exercise 04.04.01
+// Impelementation of GCF algorithm that prints each step
+// of the algorithm.
+//
+
+#include <cstdlib>
+#include <iostream>
+using namespace std;
+
+int gcf(int a, int b);
+
+int main()
+{
+    int a = 0, b = 0; // Inputs to GCF.
+    
+    cout << "Enter a: ";
+    cin >> a;
+    cout << "Enter b: ";
+    cin >> b;
+    cout << "GCF = " << gcf(a, b) << endl;
+
+    system("PAUSE");
+    return 0;
+}
+
+int gcf(int a, int b) {
+    
+    if (b == 0) {
+        cout << a << endl;
+        return a;
+    } else {
+        cout << "GCF(" << b << ", " << a%b << ") =>";
+        cout << endl;
+        return gcf(b, a%b);
+    }
+}
+
+// Exercise 04.04.02
+// Impelementation of GCF algorithm using iterative solution.
+//
+
+#include <cstdlib>
+#include <iostream>
+using namespace std;
+
+int gcf(int a, int b);
+
+int main()
+{
+    int a = 0, b = 0; // Inputs to GCF.
+    
+    cout << "Enter a: ";
+    cin >> a;
+    cout << "Enter b: ";
+    cin >> b;
+    cout << "GCF = " << gcf(a, b) << endl;
+
+    system("PAUSE");
+    return 0;
+}
+
+
+// Greatest Common Fraction.
+// Note this is iterative, not recursive.
+//
+int gcf(int a, int b) {
+    
+    int temp = 0;
+
+    while (b > 0) {
+        temp = b;
+        b = a%b;
+        a = temp;
+    }
+    return a;
+}
+
+// Exercise 04.05.01
+// Permit user to enter initial value of N, for Tower of Hanoi.
+//
+
+#include <cstdlib>
+#include <iostream>
+
+using namespace std;
+void move_rings(int n, int src, int dest, int other);
+
+int main()
+{
+  int n = 0;
+  cout << "Enter number of rings on starting pole: ";
+  cin >> n;
+  while (n < 1) {
+       cout << "Enter integer greater than 0: ";
+       cin >> n;
+  }
+    
+  move_rings(n, 1, 3, 2); // Move stack 1 to stack 3
+  cout << endl;
+  system("PAUSE");
+  return 0;
+}
+
+void move_rings(int n, int src, int dest, int other) {
+  if (n == 1) {
+    cout << "Move from "<< src <<" to "<< dest << endl;
+  } else {
+    move_rings(n - 1, src, other, dest);
+    cout << "Move from "<< src <<" to "<< dest << endl;
+    move_rings(n - 1, other, dest, src);
+  }
+}
+
+// Exercise 04.05.02
+// Solves Tower of Hanoi by using an iterative, rather than
+// recursive solution: this is admittedly less elegant and
+// more difficult to write.
+//
+
+#include <cstdlib>
+#include <iostream>
+
+using namespace std;
+void move_rings(int n, int src, int dest, int other);
+void move(int src, int dest);
+
+int main()
+{
+  int n = 3;  // Stack is 3 rings high
+    
+  move_rings(n, 1, 3, 2); // Move stack 1 to stack 3
+  system("PAUSE");
+  return 0;
+}
+
+void move_rings(int n, int src, int dest, int other) {
+  if (n == 1) {
+    move(src, dest);
+  } else {
+    move_rings(n - 1, src, other, dest);
+    move(src, dest);
+    move_rings(n - 1, other, dest, src);
+  }
+}
+
+void move(int src, int dest) {
+    cout << "Move ring from pole #";
+    cout << src;
+    cout << " to pole #";
+    cout << dest << ".";
+}
+
+// Exercise 04.06.01
+#include <iostream>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+int randomNumber(int n);
+
+int main()
+{
+	int n, i;
+	int r;
+
+	srand(time(NULL)); // Gives random seed based off of time
+
+	cout << "Enter number of dice to roll: "; 
+	cin >> n; // Gets an input from the user.
+	cout << endl;
+
+	for (i = 1; i <= n; i++) // Loops for each number entered, specified by 'n'
+	{
+		r = randomNumber(6) + 1; // sets 'r' equal to the randomNumber function of 0-5 plus 1, to make it 1-6
+		cout << r << endl; // prints out the number
+	}
+
+	system ("pause");
+}
+
+int randomNumber(int n)
+{
+	return rand() % n; // Returns a random number from 1-6
+}
+
+// Exercise 04.06.02
+// This program features a random-generator function
+//  that generates a number from 1 to N, where N is the
+//  number input.
+
+#include <iostream>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+double rand_float();
+
+int main() {
+    int n, i;
+    double r;
+    
+    srand(time(NULL)); // Set a seed for random-num. generation.
+
+    cout << "Enter number of random reals to produce: ";
+    cin >> n;
+
+    for (i = 1; i <= n; i++) {
+        r = rand_float();       // Get a random 0.0 to 1.0
+        cout << r << endl;      // Print it out
+    }
+    system("PAUSE");
+    return 0;
+}
+
+// Random Float Function.
+//
+double rand_float() {
+    
+    return (double) rand() / RAND_MAX;       
+}
+
+

@@ -1,0 +1,421 @@
+// Exercise 05.01.01
+// This program prints eight integer array members.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int i;
+    int scores[8] = {5, 15, 25, 35, 45, 55, 65, 75};
+
+    for(i = 0; i < 8; i++) {
+        cout << scores[i] << "  ";
+    }
+    cout << endl;
+    system("PAUSE");
+    return 0;
+}
+
+// Exercise 05.01.02
+// This program prints six integers along with the total.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int i, sum = 0;
+    int scores[6] = {10, 22, 13, 99, 4, 5};
+
+    for(i = 0; i < 6; i++) {
+        cout << scores[i] << " ";
+        sum = sum + scores[i];
+    }
+    cout << endl << "The sum is " << sum << endl;
+    system("PAUSE");
+    return 0;
+}
+
+// Exercise 05.01.03
+// This program prompts for seven numbers and then
+//  prints them all out along with the total.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int i, sum = 0;
+    int scores[7];
+
+    for(i = 0; i < 7; i++) {
+        cout << "Enter #" << i << ": ";
+        cin >> scores[i];
+    }
+    cout << "Here are the numbers: ";
+    for(i = 0; i < 7; i++) {
+        cout << scores[i] << " ";
+        sum = sum + scores[i];
+    }
+
+    cout << endl << "sum = " << sum << endl;
+    system("PAUSE");
+    return 0;
+}
+
+// Exercise 05.02.01
+// This program test 5 possible random values rather than 10.
+
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <cmath>
+using namespace std;
+
+int rand_0toN1(int n);
+
+int hits[5];
+
+int main() {
+    int n;
+    int i;
+    int r;
+
+    srand(time(NULL));      // Set seed for random numbers.
+
+    cout << "Enter number of trials to run and press ENTER: ";
+    cin >> n;
+
+    // Run n trials. For each trial, get a number from 0 to 4
+    //  and then increment the corresponding element in the
+    //  hits array.
+
+    for (i = 1; i <= n; i++) {
+        r = rand_0toN1(5);
+        hits[r]++;
+    }
+
+    // Print all the elements in the hits array, along with
+    //  the ratio of hits to the EXPECTED hits (n / 5).
+
+    for (i = 0; i < 5; i++) {
+        cout << i << ": " << hits[i] << "      Accuracy: ";
+        cout << static_cast<double>(hits[i]) / ((double) n / 5) << endl;
+    }
+
+    system("PAUSE");
+    return 0;
+}
+
+// Random 0-to-N1 Function.
+// Generate a random integer from 0 to N-1.
+//
+int rand_0toN1(int n) {
+    return rand() % n;
+}
+
+
+// Exercise 05.02.02
+// This program tests a number of different hit values which are
+//  specified in the #define directive. 
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <cmath>
+using namespace std;
+
+#define VALUES 10
+
+int rand_0toN1(int n);
+
+int hits[VALUES];
+
+int main() {
+    int n;
+    int i;
+    int r;
+
+    srand(time(NULL));      // Set seed for random numbers.
+
+    cout << "Enter number of trials to run and press ENTER: ";
+    cin >> n;
+
+    // Run n trials. For each trial, get a number from 0 to VALUES-1
+    //  and then increment the corresponding element in the
+    //  hits array.
+
+    for (i = 1; i <= n; i++) {
+        r = rand_0toN1(VALUES);
+        hits[r]++;
+    }
+
+    // Print all the elements in the hits array, along with
+    //  the ratio of hits to the EXPECTED hits (n / VALUES).
+
+    for (i = 0; i < VALUES; i++) {
+        cout << i << ": " << hits[i] << "      Accuracy: ";
+        cout << static_cast<double>(hits[i]) / ((double) n / VALUES) << endl;
+    }
+
+    system("PAUSE");
+    return 0;
+}
+
+// Random 0-to-N1 Function.
+// Generate a random integer from 0 to N-1.
+//
+int rand_0toN1(int n) {
+    return rand() % n;
+}
+
+
+// Exercise 05.02.03
+// This program tests a number of different hit values which are
+//  specified in the #define directive.
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <cmath>
+using namespace std;
+
+#define VALUES 10
+
+int rand_0toN1(int n);
+
+int hits[VALUES];
+
+int main() {
+    int n;
+    int i;
+    int r;
+
+    srand(time(NULL));      // Set seed for random numbers.
+
+    while (1) {
+        
+        cout << "Enter number of trials to run and press ENTER: ";
+        cin >> n;
+
+        if (n == 0)
+            break;
+
+    // Run n trials. For each trial, get a number from 0 to VALUES - 1
+    //  and then increment the corresponding element in the
+    //  hits array.
+
+        for (i = 1; i <= n; i++) {
+            r = rand_0toN1(VALUES);
+            hits[r]++;
+        }
+
+    // Print all the elements in the hits array, along with
+    //  the ratio of hits to the EXPECTED hits (n / VALUES).
+
+        for (i = 0; i < VALUES; i++) {
+            cout << i << ": " << hits[i] << "      Accuracy: ";
+            cout << static_cast<double>(hits[i]) / ((double) n / VALUES) << endl;
+        }
+
+    // Clear the hits array before the next set of trials.
+
+	for (i = 0; i < VALUES; i++)
+	    hits[i] = 0;
+    }
+
+    return 0;
+}
+
+// Random 0-to-N1 Function.
+// Generate a random integer from 0 to N-1.
+//
+int rand_0toN1(int n) {
+    return rand() % n;
+}
+
+// Exercise 05.03.01.txt
+// This program draws one of eight balls
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <cmath>
+using namespace std;
+
+int rand_0toN1(int n);
+void draw_an_item();
+
+char *colors[4] =  {"red", "blue", "orange", "green"};
+char *shapes[2] = {"ball", "cube" };
+
+int main() {
+    int n, i;
+
+    srand(time(NULL));      // Set seed for random numbers.
+
+    while (1) {
+        cout << "Enter no. of items to draw (0 to exit): ";
+        cin >> n;
+        if (n == 0)
+            break;
+        for (i = 1; i <= n; i++)
+            draw_an_item();
+    }
+    return 0;
+}
+
+// Draw-an-item function
+// Performs one item-pick by getting a random 0-4 and a random
+//  0-1.
+//
+void draw_an_item() {
+    int c;         // Random index (0 thru 4) into colors array
+    int s;         // Random index (0 thru 1) into shapes array
+
+    c = rand_0toN1(4);
+    s = rand_0toN1(2);
+    cout << colors[c] << " " << shapes[s] << endl;
+}
+
+// Random 0-to-N1 Function.
+// Generate a random integer from 0 to N-1.
+//
+int rand_0toN1(int n) {
+    return rand() % n;
+}
+
+
+// Exercise 05.04.01.txt
+// This program draws one of eight balls
+
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <cmath>
+using namespace std;
+
+int rand_0toN1(int n);
+void draw_an_item();
+
+char *colors[4] =  {"red", "blue", "orange", "green"};
+char *shapes[2] = {"ball", "cube" };
+
+int main() {
+    int n, i;
+
+    srand(time(NULL));      // Set seed for random numbers.
+
+    while (1) {
+        cout << "Enter no. of items to draw (0 to exit): ";
+        cin >> n;
+        if (n == 0)
+            break;
+        for (i = 1; i <= n; i++)
+            draw_an_item();
+    }
+    return 0;
+}
+
+// Draw-an-item function
+// Performs one item-pick by getting a random 0-4 and a random
+//  0-1. These are then used to index the string arrays, colors
+//  and shapes
+//
+void draw_an_item() {
+    int c;         // Random index (0 thru 4) into colors array
+    int s;         // Random index (0 thru 1) into shapes array
+    int item;
+
+    item = rand_0toN1(8);    // Get random number from 0 to 7
+    c = item % 4;            // c = random 0 to 3
+    s = item / 4;            // s = random 0 to 1
+    cout << colors[c] << " " << shapes[s] << endl;
+}
+
+// Random 0-to-N1 Function.
+// Generate a random integer from 0 to N-1.
+//
+int rand_0toN1(int n) {
+    return rand() % n;
+}
+
+
+// Exercise 05.05.01.txt
+// This program draws one of eight balls, using
+//  code similar to dealer2.cpp
+
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <cmath>
+using namespace std;
+
+int rand_0toN1(int n);
+void draw_an_item();
+int select_next_available(int n);
+
+char *colors[4] =  {"red", "blue", "orange", "green"};
+char *shapes[2] = {"ball", "cube" };
+
+int item_drawn[8];
+int items_remaining = 8;
+
+int main() {
+    int n, i;
+
+    srand(time(NULL));      // Set seed for random numbers.
+
+    while (1) {
+        cout << "Enter no. of items to draw (0 to exit): ";
+        cin >> n;
+        if (n == 0)
+            break;
+        for (i = 1; i <= n; i++)
+            draw_an_item();
+    }
+    return 0;
+}
+
+// Draw-an-item function
+// Performs one item-pick by getting a random 0-4 and a random
+//  0-1. These are then used to index the string arrays, colors
+//  and shapes
+//
+void draw_an_item() {
+    int c;         // Random index (0 thru 4) into colors array
+    int s;         // Random index (0 thru 1) into shapes array
+    int n, item;
+
+    n = rand_0toN1(items_remaining--);
+    item = select_next_available(n);
+
+    c = item % 4;            // c = random 0 to 3
+    s = item / 4;            // s = random 0 to 1
+    cout << colors[c] << " " << shapes[s] << endl;
+}
+
+// Select-next-available-item function.
+// Find the Nth element of item_drawn, skipping over all those
+//  elements already set to true. 
+//
+int select_next_available(int n) {
+    int i = 0;
+
+    // At beginning of draw, skip past items already drawn.
+
+    while (item_drawn[i])
+        i++;
+
+    while (n-- > 0) {     // Do the following n times:
+        i++;                       // Advance to next card
+        while (item_drawn[i])      // Skip past cards
+            i++;                   //  already drawn.
+    }
+    item_drawn[i] = true;        // Note item drawn
+    return i;                    // Return this number.
+}
+
+
+// Random 0-to-N1 Function.
+// Generate a random integer from 0 to N-1.
+//
+int rand_0toN1(int n) {
+    return rand() % n;
+}
+

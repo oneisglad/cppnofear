@@ -1,0 +1,56 @@
+// Exercise 11.01.01.txt
+// This program declares a point class as in point1.cpp, but
+//  in this version, an upper limit is enforced for values
+//  of members x and y.
+
+#include <iostream>
+using namespace std;
+
+class Point {
+private:             // Data members (private)
+    int x, y;
+public:              // Member functions
+    void set(int new_x, int new_y);
+    int get_x();
+    int get_y();
+};
+
+int main() {
+    Point pt1, pt2;
+
+    pt1.set(10, 20);
+    cout << "pt1 is " << pt1.get_x();
+    cout << ", " << pt1.get_y() << endl;
+    pt2.set(-5, -25);
+    cout << "pt2 is " << pt2.get_x();
+    cout << ", " << pt2.get_y() << endl;
+
+// Test whether new behavior works
+    pt1.set(200, 500);
+    cout << "pt1 is " << pt1.get_x();
+    cout << ", " << pt1.get_y() << endl;
+    
+    system("PAUSE");
+    return 0;
+}
+
+void Point::set(int new_x, int new_y) {
+    if (new_x < 0)
+        new_x *= -1;
+    if (new_y < 0)
+        new_y *= -1;
+    if (new_x > 100)  // NEW LINES INSERTED HERE
+        new_x = 100;
+    if (new_y > 100)
+        new_y = 100;
+    x = new_x;
+    y = new_y;
+}
+
+int Point::get_x() {
+    return x;
+}
+
+int Point::get_y() {
+    return y;
+}

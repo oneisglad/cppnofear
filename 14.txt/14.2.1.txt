@@ -1,0 +1,58 @@
+// Exercise 14.02.01
+// This version of string1.cpp tests the default constructor
+//  String().
+
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+class String {
+private:
+    char *ptr;
+public:
+    String();
+    String(char *s);
+    ~String();
+
+    int operator==(const String &other);
+    operator char*() {return ptr;}
+};
+
+int main() {
+    String a("ser");
+    String b("ik");
+    String c;                 // NEW OBJECT DECL.
+    cout << "The value of a is: " << endl;
+    cout << a << endl;
+    cout << "The value of b is: " << endl;
+    cout << b << endl;
+
+    // PRINT VALUE OF C BETWEEN BRACKETS:
+
+    cout << "The value of c is between these brackets<";
+    cout << c << ">" << endl;
+    system("PAUSE");
+    return 0;
+}
+
+// ----------------------------------
+// STRING CLASS FUNCTIONS
+
+String::String() {
+    ptr = new char[1];
+    ptr[0] = '\0';
+}
+
+String::String(char *s) {
+    int n = strlen(s);
+    ptr = new char[n + 1];
+    strcpy(ptr, s);
+}
+
+String::~String() {
+    delete [] ptr;
+}
+
+int String:: operator==(const String &other) {
+    return (strcmp(ptr, other.ptr) == 0);
+}
